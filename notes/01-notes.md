@@ -1,4 +1,4 @@
-# Intro
+# Lecture 01
 
 tty: Telescope TYpewriter
 
@@ -135,3 +135,39 @@ subprograms and prepare them for execution
 
 - Interrupt pin goes high during execution of current instruction
 
+## What is a program
+
+- data describes a process
+- metaphor: recipe
+
+## birth of a program
+
+- suppose static-linked
+- .c file -> compiler -> .s file -> assembler -> .o file
+-> linker (with Libraries) -> executable
+
+### executable file
+
+- ELF (Executable and Linkable Format)
+  - linux use ELF, macOS use Mach-O, Windows use PE
+
+- header, text, idata (immutable), wdata (writable), symbol table, relocation records
+- header: section table in an aray of (offset, len, startVA)
+  - indicated type of file
+
+- symbol table and relocation records are optional metadata used by tools
+  - remove after final link step and strip
+  - add more symbol info for debugger
+- symbol table : all defined symbols
+- relocation records: all references to symbols
+
+### running a program
+
+- OS initializes a **process** with a virtual memory to store its code and data
+- sections of the executable initialize  **segments** in the virtual memory
+
+#### VM segments
+
+- globals (static data)
+- text (instructions)
+- heap and stack
